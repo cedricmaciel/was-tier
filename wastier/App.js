@@ -1,12 +1,14 @@
+import { View, Text, StyleSheet } from 'react-native';
+import { Camera } from 'expo-camera';
 
-import React from 'react';
-import { View } from 'react-native';
-import HomeScreen from './screens/HomeScreen';
 
-export default function App() {
+export default function App(){
   return (
-    <View>
-      <HomeScreen />
+    <View style={{marginTop: 34}}>
+      <Text>Hello programa</Text>
+      <Text>Hello programa</Text>
+      <Text>Hello programa</Text>
     </View>
   );
 }
+

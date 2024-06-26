@@ -29,13 +29,7 @@ export default function App() {
   
   if(!device || device === null) return <View></View>
    
-    return (
-      <View style={styles.container}>
-        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-        <Button onClick={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
+    
 
   return (
     <View style={styles.container}>
@@ -46,15 +40,12 @@ export default function App() {
       </View>
 
       <Camera style={styles.camera} ref={cameraRef} device={device} isActive={true} orientation={"portrait"} resizeMode={"cover"}  >
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
-        </View>
+        
+         
       </Camera>
     </View>
   );
-
+}
 
 const styles = StyleSheet.create({
   container: {

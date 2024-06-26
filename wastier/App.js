@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderColor: 'white',
     borderWidth: 2,
-    overflow: 'hidden', 
+    overflow: 'hidden',
+    backgroundColor: 'black',
   },
   preview: {
     flex: 1,

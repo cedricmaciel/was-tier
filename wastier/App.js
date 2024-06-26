@@ -7,12 +7,12 @@ export default function App() {
   const [permission, requestPermission] = useCameraPermissions();
 
   if (!permission) {
-    // Camera permissions are still loading.
+    
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
+    
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
@@ -34,32 +34,43 @@ export default function App() {
         </View>
       </View>
 
-      <CameraView style={styles.camera} facing={facing}  isActive={true} orientation={"portrait"} resizeMode={"cover"} >
-      <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
+      <View style={styles.cont}>
+      
+
+        <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrit"} resizeMode={"cover"} >
+           <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.button} onPress=   {toggleCameraFacing}>
+                   <Text style={styles.text}></Text>
+                </TouchableOpacity>
+           </View>
+        </CameraView>
         </View>
-      </CameraView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 30,
     flex: 1,
-    backgroundColor: '#006400',
+    backgroundColor: '#2F4F4F',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    borderWidth: 5,
+    borderColor: '#FFFFF',
   },
   header: {
+    
     width: '100%',
     height: 110,
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 5,
+    borderColor: '#FFFFFF',
   },
   menu: {
+   
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -69,31 +80,53 @@ const styles = StyleSheet.create({
     fontSize: 50,
     marginTop: 10,
   },
-  cameraContainer: {
+  cont: {
     
-    width: '90%',
-    height: 300,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
-    borderColor: 'white',
-    borderWidth: 2,
+    width: '90%',
+    height: 300,
+    borderWidth: 5,
+    borderColor: '#FFFFFF',
+    
+
+  },
+  cameraContainer: {
+   
+    
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+   
     overflow: 'hidden', 
   },
-  preview: {
-    
-    flex: 1,
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+  buttonContainer:{
+
+    marginTop: 100,
+
   },
-  capture: {
-    
-    backgroundColor: '#fff',
-    borderRadius: 5,
+  button: {
+
+    marginTop: 100,
+    backgroundColor: '#1E90FF',
+    borderRadius: 50,
+    height: 80,
+    width: 80,
     padding: 15,
     paddingHorizontal: 20,
     alignSelf: 'center',
-    margin: 20,
+    borderWidth: 5,
+    borderColor: '#FFFFFF',
+    shadowColor: 'blue',  
+  shadowOffset: { width: 0, height: 2},  
+  shadowOpacity: 0.8,  
+  shadowRadius: 5,  
   },
+
+  text: {
+     color: 'black',
+     fontSize: 28,
+  }
 });

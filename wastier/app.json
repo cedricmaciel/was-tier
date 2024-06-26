@@ -5,28 +5,22 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSCameraUsageDescription": "We need access to your camera to take pictures.",
-        "NSMicrophoneUsageDescription": "We need access to your microphone to record videos."
-      }
+      "supportsTablet": true
     },
     "android": {
-      "permissions": ["CAMERA", "WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"],
-      "package": "com.yourapp.package"
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
     },
-
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -38,7 +32,5 @@
     "experiments": {
       "typedRoutes": true
     }
-
-    
   }
 }

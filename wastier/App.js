@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   cameraContainer: {
+    
     width: '90%',
     height: 300,
     justifyContent: 'center',
@@ -74,16 +75,17 @@ const styles = StyleSheet.create({
     marginTop: 20,
     borderColor: 'white',
     borderWidth: 2,
-    overflow: 'hidden',
-    backgroundColor: 'black',
+    overflow: 'hidden', 
   },
   preview: {
+    
     flex: 1,
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   capture: {
+    
     backgroundColor: '#fff',
     borderRadius: 5,
     padding: 15,

@@ -1,35 +1,30 @@
-import { Camera ,useCameraDevice, useCameraPermissions } from 'expo-camera';
-import { useEffect, useState, useRef} from 'react';
+import { CameraView, useCameraPermissions } from 'expo-camera';
+import { useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
+  const [facing, setFacing] = useState('back');
+  const [permission, requestPermission] = useCameraPermissions();
 
-  const device = useCameraDevice("back");
-  const { hasPermission, requestPermission  } = useCameraPermissions();
-  const [ permission, setPermission ]= useState< null | boolean>(bull);
+  if (!permission) {
+    // Camera permissions are still loading.
+    return <View />;
+  }
 
-  const cameraRef = useRef<Camera>(null);
+  if (!permission.granted) {
+    // Camera permissions are not granted yet.
+    return (
+      <View style={styles.container}>
+        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
 
-  useEffect(() => {
-    (async () => {
-      const status = await requestPermission();
+  function toggleCameraFacing() {
+    setFacing(current => (current === 'back' ? 'front' : 'back'));
+  }
 
-      if(status){
-        setPermission(true);
-
-      }
-
-      
-
-    })()
-  }, [])
-
-
-  if (!permission) return <View />
-  
-  if(!device || device === null) return <View></View>
-   
-    
 
   return (
     <View style={styles.container}>
@@ -39,10 +34,13 @@ export default function App() {
         </View>
       </View>
 
-      <Camera style={styles.camera} ref={cameraRef} device={device} isActive={true} orientation={"portrait"} resizeMode={"cover"}  >
-        
-         
-      </Camera>
+      <CameraView style={styles.camera} facing={facing}  isActive={true} orientation={"portrait"} resizeMode={"cover"} >
+      <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+            <Text style={styles.text}>Flip Camera</Text>
+          </TouchableOpacity>
+        </View>
+      </CameraView>
     </View>
   );
 }

@@ -1,17 +1,33 @@
-import React, { useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { RNCamera } from 'react-native-camera';
+import { CameraView, useCameraPermissions } from 'expo-camera';
+import { useEffect, useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
-  const cameraRef = useRef(null);
 
-  const takePicture = async () => {
-    if (cameraRef.current) {
-      const options = { quality: 0.5, base64: true };
-      const data = await cameraRef.current.takePictureAsync(options);
-      console.log(data.uri);
-    }
-  };
+  const view = CameraView('back');
+  const { hasPermission, requestPermission  } = useCameraPermissions();
+  const [ permission, setPermission ]= useState< null | boolean>(bull);
+
+  useEffect(() => {
+    (async ()= > {
+
+    })()
+  }, [])
+
+  if (!permission) {
+    
+    return <View />;
+  }
+
+  if (!permission.granted) {
+   
+    return (
+      <View style={styles.container}>
+        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -21,23 +37,13 @@ export default function App() {
         </View>
       </View>
 
-      <View style={styles.cameraContainer}>
-        <RNCamera
-          ref={cameraRef}
-          style={styles.preview}
-          type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.auto}
-          androidCameraPermissionOptions={{
-            title: 'Permissão para usar a câmera',
-            message: 'Precisamos da sua permissão para usar a câmera',
-            buttonPositive: 'Ok',
-            buttonNegative: 'Cancelar',
-          }}
-        />
-        <TouchableOpacity onPress={takePicture} style={styles.capture}>
-          <Text style={{ fontSize: 14, color: "blue" }}> SCAN </Text>
-        </TouchableOpacity>
-      </View>
+      <CameraView style={styles.camera} facing={facing}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+            <Text style={styles.text}>Flip Camera</Text>
+          </TouchableOpacity>
+        </View>
+      </CameraView>
     </View>
   );
 }

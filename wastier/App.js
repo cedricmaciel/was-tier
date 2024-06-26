@@ -1,30 +1,38 @@
-import { CameraView, useCameraPermissions } from 'expo-camera';
-import { useEffect, useState } from 'react';
+import { Camera ,useCameraDevice, useCameraPermissions } from 'expo-camera';
+import { useEffect, useState, useRef} from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
 
-  const view = CameraView('back');
+  const device = useCameraDevice("back");
   const { hasPermission, requestPermission  } = useCameraPermissions();
   const [ permission, setPermission ]= useState< null | boolean>(bull);
 
+  const cameraRef = useRef<Camera>(null);
+
   useEffect(() => {
-    (async ()= > {
+    (async () => {
+      const status = await requestPermission();
+
+      if(status){
+        setPermission(true);
+
+      }
+
+      
 
     })()
   }, [])
 
-  if (!permission) {
-    
-    return <View />;
-  }
 
-  if (!permission.granted) {
+  if (!permission) return <View />
+  
+  if(!device || device === null) return <View></View>
    
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-        <Button onPress={requestPermission} title="grant permission" />
+        <Button onClick={requestPermission} title="grant permission" />
       </View>
     );
   }
@@ -37,16 +45,16 @@ export default function App() {
         </View>
       </View>
 
-      <CameraView style={styles.camera} facing={facing}>
+      <Camera style={styles.camera} ref={cameraRef} device={device} isActive={true} orientation={"portrait"} resizeMode={"cover"}  >
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
         </View>
-      </CameraView>
+      </Camera>
     </View>
   );
-}
+
 
 const styles = StyleSheet.create({
   container: {

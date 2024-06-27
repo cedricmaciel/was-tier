@@ -44,16 +44,17 @@ export default function App() {
                 </TouchableOpacity>
            </View>
         </CameraView>
-        </View>
+      </View>
 
-        <View style={styles.previewAnimals}>
+      <View style={styles.previewAnimals}>
          <Text>Algo vai surgir aqui </Text>
-        </View>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+
   container: {
     marginTop: 20,
     flex: 1,
@@ -62,7 +63,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 5,
     borderColor: '#FFFFFF',
+    
+    
   },
+
+  
+
+  
   header: {
     
     width: '100%',
@@ -93,6 +100,7 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: '#FFFFFF',
     
+    
 
   },
   cameraContainer: {
@@ -113,22 +121,31 @@ const styles = StyleSheet.create({
 
     marginTop: 100,
     backgroundColor: '#1E90FF',
-    borderRadius: 50,
-    height: 80,
-    width: 80,
+    borderRadius: 99,
+    height: 75,
+    width: 75,
     padding: 15,
     paddingHorizontal: 20,
     alignSelf: 'center',
     borderWidth: 5,
     borderColor: '#FFFFFF',
     shadowColor: 'blue',  
-  shadowOffset: { width: 0, height: 2},  
-  shadowOpacity: 0.8,  
-  shadowRadius: 5,  
+  shadowOffset: { width: 2, height: 2},  
+  shadowOpacity: 1,  
+  shadowRadius: 10,  
   },
 
   text: {
      color: 'black',
      fontSize: 28,
-  }
+  },
+
+  previewAnimals: {
+
+    width: "95%", 
+    height: 400,
+
+    backgroundColor: "#FFE4B5",
+
+  },
 });

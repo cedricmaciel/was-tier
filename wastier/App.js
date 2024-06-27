@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     
     width: '100%',
     height: 100,
-    
+    marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
     
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
 
     textAlign: 'center',
     color: 'white',
-    fontSize: 50,
+    fontSize: 40,
     borderWidth: 5,
     borderColor: '#FFFFFF',
     backgroundColor: 'black',
@@ -174,6 +174,8 @@ const styles = StyleSheet.create({
   },
 
   texto2: {
+
+    
 
     color: 'white'
 

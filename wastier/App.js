@@ -48,6 +48,10 @@ const photo = () => {
       <View style={styles.previewAnimals}>
          <Text>Algo vai surgir aqui </Text>
       </View>
+
+      <View style={styles.header2}>
+          <Text style={styles.texto2}>v 1.0.0 Beta</Text>
+      </View>
     </View>
   );
 }
@@ -66,9 +70,6 @@ const styles = StyleSheet.create({
     
   },
 
-  
-
-  
   header: {
     
     width: '100%',
@@ -79,12 +80,14 @@ const styles = StyleSheet.create({
     borderWidth: 5,
     borderColor: '#FFFFFF',
   },
+
   menu: {
    
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   texto: {
 
     textAlign: 'center',
@@ -94,6 +97,7 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     
   },
+
   cont: {
     
     justifyContent: 'center',
@@ -106,6 +110,7 @@ const styles = StyleSheet.create({
     
 
   },
+
   cameraContainer: {
    
     
@@ -115,11 +120,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden', 
   },
+
   buttonContainer:{
 
     marginTop: 100,
 
   },
+
   button: {
 
     marginTop: 100,
@@ -150,4 +157,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFE4B5",
 
   },
+
+  header2: {
+
+    backgroundColor: 'black',
+    height: 30,
+    width: '85%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 5,
+    borderColor: '#FFFFFF',
+    marginTop: 40,
+
+  },
+
+  texto2: {
+
+    color: 'white'
+
+  }
 });

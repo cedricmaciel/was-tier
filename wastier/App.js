@@ -46,7 +46,7 @@ export default function App() {
         </CameraView>
         </View>
 
-        <View>
+        <View style={styles.previewAnimals}>
          <Text>Algo vai surgir aqui </Text>
         </View>
     </View>

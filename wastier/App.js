@@ -1,6 +1,6 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
 
 export default function App() {
   const [facing, setFacing] = useState('back');
@@ -26,47 +26,49 @@ const photo = () => {
 }
 
   return (
-    <View style={styles.container}>
+
+    <ImageBackground source={require('./assets/dream.jpg')} style={styles.container}>
+    
       <View style={styles.header}>
         <View style={styles.menu}>
           <Text style={styles.texto}>BICHODEX</Text>
         </View>
       </View>
+  
+    <View style={styles.cont}>
 
-      <View style={styles.cont}>
-      
-
-        <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrit"} resizeMode={"cover"} >
+           <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrit"} resizeMode={"cover"} >
            <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={photo}>
                    <Text style={styles.text}></Text>
                 </TouchableOpacity>
            </View>
         </CameraView>
-      </View>
-
-      <View style={styles.previewAnimals}>
-         <Text>Algo vai surgir aqui </Text>
-      </View>
-
-      <View style={styles.header2}>
-          <Text style={styles.texto2}>v 1.0.0 Beta</Text>
-      </View>
     </View>
+
+    <View style={styles.previewAnimals}>
+         <Text>Algo vai surgir aqui </Text>
+    </View>
+      
+
+    <View style={styles.header2}>
+          <Text style={styles.texto2}>v 1.0.0 Beta</Text>
+    </View>
+    
+    
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
 
   container: {
-    marginTop: 20,
+    
     flex: 1,
-    backgroundColor: '#2F4F4F',
+    
     justifyContent: 'flex',
     alignItems: 'center',
-    borderWidth: 5,
-    borderColor: '#FFFFFF',
-    
+  
     
   },
 
@@ -74,11 +76,10 @@ const styles = StyleSheet.create({
     
     width: '100%',
     height: 100,
-    backgroundColor: 'black',
+    
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 5,
-    borderColor: '#FFFFFF',
+    
   },
 
   menu: {
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 50,
     borderWidth: 5,
     borderColor: '#FFFFFF',
+    backgroundColor: 'black',
     
   },
 
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     
     justifyContent: 'center',
     alignItems: 'center',
-    width: '90%',
+    width: '85%',
     height: 300,
     borderWidth: 5,
     borderColor: '#FFFFFF',
@@ -162,12 +164,12 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'black',
     height: 30,
-    width: '85%',
+    width: '30%',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 5,
     borderColor: '#FFFFFF',
-    marginTop: 40,
+    marginTop: 50,
 
   },
 

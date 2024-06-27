@@ -25,10 +25,14 @@ export default function App() {
 
 const takePhoto =  async() => {
   if(cameraRef.current){
+    try{
     const{ uri } = await cameraRef.current.takePictureAsync();
   console.log('foto tirada', uri);
   setCapturedImage(uri);
+  } catch (error) {
+    console.error('Erro ao tirar foto:', error);
   }
+}
 }
 
 const deletePhoto = () => {
@@ -47,7 +51,7 @@ const deletePhoto = () => {
   
     <View style={styles.cont}>
 
-           <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrit"} resizeMode={"cover"} >
+           <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrait"} resizeMode={"cover"} >
            <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={takePhoto}>
                    <Text style={styles.text}></Text>
@@ -193,18 +197,20 @@ const styles = StyleSheet.create({
   },
 
   texto2: {
-
-    
-
     color: 'white'
 
   }, 
-
-  previewImage: {
-    width: "92%", 
-    height: 300,
-
+ preview: {
+  width: "80%", 
+  height: 400,
   top: 30,
+
+ }
+ ,
+  previewImage: {
+    width: "80%", 
+    height: 300,
+    top: 30,
 
   }
 });

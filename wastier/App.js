@@ -89,7 +89,11 @@ const styles = StyleSheet.create({
   texto: {
     color: 'white',
     fontSize: 50,
-    marginTop: 10,
+   
+    shadowColor: 'blue',  
+  shadowOffset: { width: 0, height: 2},  
+  shadowOpacity: 0.8,  
+  shadowRadius: 10,
   },
   cont: {
     

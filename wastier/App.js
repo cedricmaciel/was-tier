@@ -45,6 +45,10 @@ export default function App() {
            </View>
         </CameraView>
         </View>
+
+        <View>
+         <Text>Algo vai surgir aqui </Text>
+        </View>
     </View>
   );
 }

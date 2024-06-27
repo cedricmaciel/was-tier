@@ -21,10 +21,9 @@ export default function App() {
     );
   }
 
-  function toggleCameraFacing() {
-    setFacing(current => (current === 'back' ? 'front' : 'back'));
-  }
-
+const photo = () => {
+  console.log('foto tirada');
+}
 
   return (
     <View style={styles.container}>
@@ -39,7 +38,7 @@ export default function App() {
 
         <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrit"} resizeMode={"cover"} >
            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress=   {toggleCameraFacing}>
+                <TouchableOpacity style={styles.button} onPress={photo}>
                    <Text style={styles.text}></Text>
                 </TouchableOpacity>
            </View>

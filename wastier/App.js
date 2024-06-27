@@ -129,10 +129,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderWidth: 5,
     borderColor: '#FFFFFF',
-    shadowColor: 'blue',  
-  shadowOffset: { width: 2, height: 2},  
-  shadowOpacity: 1,  
-  shadowRadius: 10,  
+      
   },
 
   text: {

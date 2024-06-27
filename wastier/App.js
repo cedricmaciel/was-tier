@@ -87,13 +87,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   texto: {
+
+    textAlign: 'center',
     color: 'white',
     fontSize: 50,
-   
-    shadowColor: 'blue',  
-  shadowOffset: { width: 0, height: 2},  
-  shadowOpacity: 0.8,  
-  shadowRadius: 10,
+    borderWidth: 5,
+    borderColor: '#FFFFFF',
+    
   },
   cont: {
     

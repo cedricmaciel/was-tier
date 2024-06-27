@@ -1,10 +1,12 @@
-import { CameraView, useCameraPermissions } from 'expo-camera';
-import { useState } from 'react';
+import { CameraView, useCameraPermissions, Camera } from 'expo-camera';
+import { useState , useRef} from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
 
 export default function App() {
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
+  const [capturedImage, setCapturedImage] = useState(null);
+  const cameraRef = useRef(null);
 
   if (!permission) {
     
@@ -21,8 +23,16 @@ export default function App() {
     );
   }
 
-const photo = () => {
-  console.log('foto tirada');
+const takePhoto =  async() => {
+  if(cameraRef.current){
+    const{ uri } = await cameraRef.current.takePictureAsync();
+  console.log('foto tirada', uri);
+  setCapturedImage(uri);
+  }
+}
+
+const deletePhoto = () => {
+  setCapturedImage(null);
 }
 
   return (
@@ -39,12 +49,21 @@ const photo = () => {
 
            <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrit"} resizeMode={"cover"} >
            <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={photo}>
+                <TouchableOpacity style={styles.button} onPress={takePhoto}>
                    <Text style={styles.text}></Text>
                 </TouchableOpacity>
            </View>
         </CameraView>
     </View>
+
+    {capturedImage && (
+        <View style={styles.preview}>
+          <Image source={{ uri: capturedImage }} style={styles.previewImage} />
+          <TouchableOpacity style={styles.deleteButton} onPress={deletePhoto}>
+            <Text style={styles.deleteText}>Excluir Foto</Text>
+          </TouchableOpacity>
+        </View>
+      )}
 
     <View style={styles.previewAnimals}>
          <Text>Algo vai surgir aqui </Text>
@@ -178,6 +197,14 @@ const styles = StyleSheet.create({
     
 
     color: 'white'
+
+  }, 
+
+  previewImage: {
+    width: "92%", 
+    height: 300,
+
+  top: 30,
 
   }
 });

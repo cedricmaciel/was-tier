@@ -51,18 +51,18 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
+    marginTop: 20,
     flex: 1,
     backgroundColor: '#2F4F4F',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex',
     alignItems: 'center',
     borderWidth: 5,
-    borderColor: '#FFFFF',
+    borderColor: '#FFFFFF',
   },
   header: {
     
     width: '100%',
-    height: 110,
+    height: 100,
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
@@ -98,8 +98,6 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    
-   
     overflow: 'hidden', 
   },
   buttonContainer:{

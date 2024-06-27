@@ -1,6 +1,6 @@
 import { CameraView, useCameraPermissions, Camera } from 'expo-camera';
 import { useState , useRef} from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View, ImageBackground } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View, ImageBackground, Image } from 'react-native';
 
 export default function App() {
   const [facing, setFacing] = useState('back');
@@ -23,17 +23,17 @@ export default function App() {
     );
   }
 
-const takePhoto =  async() => {
-  if(cameraRef.current){
-    try{
-    const{ uri } = await cameraRef.current.takePictureAsync();
-  console.log('foto tirada', uri);
-  setCapturedImage(uri);
-  } catch (error) {
-    console.error('Erro ao tirar foto:', error);
+  const takePhoto = async () => {
+    if (cameraRef.current) {
+      try {
+        const { uri } = await cameraRef.current.takePictureAsync();
+        console.log('Foto tirada:', uri);
+        setCapturedImage(uri);
+      } catch (error) {
+        console.error('Erro ao tirar foto:', error);
+      }
+    }
   }
-}
-}
 
 const deletePhoto = () => {
   setCapturedImage(null);
@@ -51,7 +51,7 @@ const deletePhoto = () => {
   
     <View style={styles.cont}>
 
-           <CameraView style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrait"} resizeMode={"cover"} >
+           <CameraView ref={cameraRef}style={styles.cameraContainer} facing={facing}  isActive={true} orientation={"portrait"} resizeMode={"cover"} >
            <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={takePhoto}>
                    <Text style={styles.text}></Text>

@@ -30,7 +30,7 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.menu}>
-          <Text style={styles.texto}>WasTier</Text>
+          <Text style={styles.texto}>BICHODEX</Text>
         </View>
       </View>
 
@@ -142,8 +142,10 @@ const styles = StyleSheet.create({
 
   previewAnimals: {
 
-    width: "95%", 
-    height: 400,
+    width: "92%", 
+    height: 300,
+
+    top: 30,
 
     backgroundColor: "#FFE4B5",
 
